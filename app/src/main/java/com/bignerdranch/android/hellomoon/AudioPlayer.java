@@ -11,19 +11,15 @@ public class AudioPlayer {
 
     public void stop() {
         if (mPlayer != null) {
-            mPlayer.release();
+            mPlayer.release();  // destroy instance
             mPlayer = null;
         }
     }
 
     public void play(Context c) {
-//        stop();
-//
-//        mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
+        stop();     // avoid multiple AudioPlayer instance
 
-        if (mPlayer == null) {
-            mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
-        }
+        mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
 
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp){
@@ -34,17 +30,21 @@ public class AudioPlayer {
         mPlayer.start();
     }
 
-    public void pause() {
-        if (isPlaying()) {
-            mPlayer.pause();
-        }
-    }
-
     public boolean isPlaying() {
-        return null == mPlayer ? false : mPlayer.isPlaying();
+        return mPlayer != null;
     }
 
-    public boolean isPaused() {
-        return null == mPlayer ? false : !mPlayer.isPlaying();
-    }
+//    public void pause() {
+//        if (isPlaying()) {
+//            mPlayer.pause();
+//        }
+//    }
+//
+//    public boolean isPlaying() {
+//        return null == mPlayer ? false : mPlayer.isPlaying();
+//    }
+//
+//    public boolean isPaused() {
+//        return null == mPlayer ? false : !mPlayer.isPlaying();
+//    }
 }

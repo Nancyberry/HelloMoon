@@ -14,20 +14,25 @@ public class HelloMoonFragment extends Fragment {
     private Button mPauseButton;
     private Button mStopButton;
 
-    void updateButtons() {
-//        boolean isEnabled = !mPlayer.isPlaying();
-//        mPlayButton.setEnabled(isEnabled);
-        boolean isPaused = mPlayer.isPaused();
-        if (isPaused) {
-            mPlayButton.setEnabled(true);
-            mPauseButton.setEnabled(false);
-        }
+//    void updateButtons() {
+////        boolean isEnabled = !mPlayer.isPlaying();
+////        mPlayButton.setEnabled(isEnabled);
+//        boolean isPaused = mPlayer.isPaused();
+//        if (isPaused) {
+//            mPlayButton.setEnabled(true);
+//            mPauseButton.setEnabled(false);
+//        }
+//
+//        boolean isPlaying = mPlayer.isPlaying();
+//        if (isPlaying) {
+//            mPlayButton.setEnabled(false);
+//            mPauseButton.setEnabled(true);
+//        }
+//    }
 
-        boolean isPlaying = mPlayer.isPlaying();
-        if (isPlaying) {
-            mPlayButton.setEnabled(false);
-            mPauseButton.setEnabled(true);
-        }
+    void updateButtons() {
+        boolean isEnabled = !mPlayer.isPlaying();
+        mPlayButton.setEnabled(isEnabled);
     }
 
     @Override
@@ -41,7 +46,7 @@ public class HelloMoonFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_hello_moon, parent, false);
 
         mPlayButton = (Button)v.findViewById(R.id.hellomoon_playButton);
-        mPauseButton = (Button)v.findViewById(R.id.hellomoon_pauseButton);
+//        mPauseButton = (Button)v.findViewById(R.id.hellomoon_pauseButton);
         mStopButton = (Button)v.findViewById(R.id.hellomoon_stopButton);
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +56,12 @@ public class HelloMoonFragment extends Fragment {
             }
         });
 
-        mPauseButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mPlayer.pause();
-                updateButtons();
-            }
-        });
+//        mPauseButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                mPlayer.pause();
+//                updateButtons();
+//            }
+//        });
 
         mStopButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
